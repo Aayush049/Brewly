@@ -24,26 +24,42 @@ fun CategoryCard(
     onSelected: () -> Unit,
 ) {
 
+    // Creates the visual container for a single coffee category.
     Box(
         modifier = Modifier
             .width(90.dp)
             .height(35.dp)
+
+            // NEW CONCEPT — clip()
+            // Clips the content to the specified rounded shape.
             .clip(RoundedCornerShape(6.dp))
-            .clickable { onSelected() }
+
+            // KNOWN CONCEPT — clickable
+            // Makes the entire category card respond to user clicks.
+            .clickable {
+                onSelected()
+            }
+
+            // Changes the background depending on whether
+            // this category is currently selected.
             .background(
                 color =
                     if (isSelected) LightBrown
                     else LightGray.copy(alpha = 0.6f)
             ),
+
+        // Places the category text in the center of the card.
         contentAlignment = Alignment.Center
     ) {
+
+        // Displays the category name.
         Text(
             text = text,
             fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold,
-            maxLines = 1,
 
+            // Prevents the category name from occupying multiple lines.
+            maxLines = 1,
         )
     }
-
 }

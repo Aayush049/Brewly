@@ -14,6 +14,9 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun HomeScreenCatagories() {
+
+    // Stores the available coffee categories.
+    // This list is later used to generate the category cards.
     val categories = listOf(
         "All Coffee",
         "Latte",
@@ -23,19 +26,41 @@ fun HomeScreenCatagories() {
         "Espresso"
     )
 
-    var selectedCategory by remember { mutableStateOf(categories.first()) }
+    // KNOWN CONCEPT — State
+    // Stores which category is currently selected.
+    //
+    // categories.first() sets "All Coffee" as the initial selection.
+    var selectedCategory by remember {
+        mutableStateOf(categories.first())
+    }
 
+    // KNOWN CONCEPT — LazyRow
+    // Displays the categories horizontally while composing only
+    // the items that are needed on screen.
     LazyRow(
         modifier = Modifier.padding(horizontal = 12.dp),
+
+        // Adds 8.dp of spacing between each category card.
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(categories){ category ->
+
+        // KNOWN CONCEPT — items()
+        // Generates one UI item for every category in the list.
+        items(categories) { category ->
+
+            // Reusable component representing one category.
             CategoryCard(
                 text = category,
+
+                // Checks whether this category is currently selected.
+                // Only the selected category receives the selected state.
                 isSelected = category == selectedCategory,
-                onSelected = { selectedCategory = category }
+
+                // Updates the selected category when the user selects a card.
+                onSelected = {
+                    selectedCategory = category
+                }
             )
         }
     }
-
 }

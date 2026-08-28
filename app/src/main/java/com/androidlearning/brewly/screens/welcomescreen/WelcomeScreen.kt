@@ -30,51 +30,77 @@ import com.androidlearning.brewly.ui.theme.LightBrown
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun WelcomeScreen() {
+
+    // Creates the main container for the entire welcome screen.
+    // Box allows the image and the content to be placed on top of each other.
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color.Black)
     ) {
+
+        // Displays the welcome/background image.
+        // painterResource() loads the image from the drawable resources.
         Image(
             painter = painterResource(R.drawable.homescreen),
             contentDescription = "Welcome Image"
         )
 
+        // Contains the text and button displayed at the bottom of the screen.
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(vertical = 70.dp, horizontal = 24.dp),
+                .padding(
+                    vertical = 70.dp,
+                    horizontal = 24.dp
+                ),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Bottom
         ) {
-            Text(text = "Fall in Love with Coffee with Blissful Delight!",
+
+            // Main heading of the welcome screen.
+            Text(
+                text = "Fall in Love with Coffee with Blissful Delight!",
                 color = Color.White,
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
 
+            // Adds vertical space between the heading and subtitle.
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(text = "Welcome to our cozy coffee corner",
+            // Supporting description below the main heading.
+            Text(
+                text = "Welcome to our cozy coffee corner",
                 color = Color.LightGray,
                 textAlign = TextAlign.Center,
                 fontSize = 16.sp
             )
 
+            // Adds more space before the Get Started button.
             Spacer(modifier = Modifier.height(50.dp))
 
+            // Get Started button for entering the main application.
             Button(
                 onClick = { /* Handle button click */ },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
+
+                // NEW CONCEPT — ButtonDefaults.buttonColors
+                // Used to customize the colors of the Material 3 Button.
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = LightBrown, //Directly Assessable
+                    // Uses a custom color defined in the app's theme.
+                    containerColor = LightBrown,
                     contentColor = Color.White
                 ),
+
+                // Rounds the corners of the button.
                 shape = RoundedCornerShape(12.dp)
             ) {
+
+                // Text displayed inside the Get Started button.
                 Text(
                     text = "Get Started",
                     fontSize = 18.sp
