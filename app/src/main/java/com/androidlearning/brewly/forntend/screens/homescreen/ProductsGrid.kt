@@ -10,11 +10,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.androidlearning.brewly.domain.model.Product
 
 @Composable
 fun ProductsGrid(
     products: List<Product>,
+    navController: NavHostController,
 
     // NEW CONCEPT — Composable Lambda
     // Allows the caller to provide any Composable content that should
@@ -61,6 +63,7 @@ fun ProductsGrid(
                 // First product in the current row.
                 ProductCard(
                     product = rowItems[0],
+                    navController = navController,
 
                     // Each ProductCard receives half of the available
                     // horizontal space when two products are present.
@@ -76,6 +79,7 @@ fun ProductsGrid(
                     // Second product in the current row.
                     ProductCard(
                         product = rowItems[1],
+                        navController = navController,
                         modifier = Modifier.weight(1f)
                     )
 

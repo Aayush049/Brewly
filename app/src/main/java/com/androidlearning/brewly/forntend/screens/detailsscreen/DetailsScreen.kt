@@ -2,14 +2,14 @@ package com.androidlearning.brewly.forntend.screens.detailsscreen
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.androidlearning.brewly.R
 import com.androidlearning.brewly.domain.model.Product
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun DetailsScreen() {
+fun DetailsScreen(productId: Int, navController: NavHostController) {
 
     // Dummy product data for the Details screen.
     val products = listOf(
@@ -23,11 +23,17 @@ fun DetailsScreen() {
     )
 
     // NEW — Finds the first product matching the given condition.
-    val selectedProduct = products.find { it.id == 1 }
+    val selectedProduct = products.find { it.id == productId }
+
+    if (selectedProduct == null) {
+        // Handle the case where the product is not found.
+        Text(text = "Product not found")
+        return
+    }
 
     Scaffold(
         topBar = {
-            DetailsScreenTopAppBar() // Details screen top app bar.
+            DetailsScreenTopAppBar(navController) // Details screen top app bar.
         },
         bottomBar = {
             DetailsScreenBottomAppBar() // Details screen bottom action bar.
@@ -42,7 +48,7 @@ fun DetailsScreen() {
                 ProductDetailsContent(
                     selectedProduct,
                     innerPadding
-                ) // Error here will be solved later.
+                )
             }
         }
     }

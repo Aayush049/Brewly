@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.androidlearning.brewly.forntend.screens.homescreen.HomeScreen
+import com.androidlearning.brewly.forntend.navigation.NavGraph
 import com.androidlearning.brewly.forntend.theme.BrewlyTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BrewlyTheme {
-                HomeScreen()
+                NavGraph()
             }
         }
     }

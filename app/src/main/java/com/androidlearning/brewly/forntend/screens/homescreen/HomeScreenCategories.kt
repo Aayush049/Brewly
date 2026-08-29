@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HomeScreenCatagories() {
+fun HomeScreenCategories() {
 
     // Stores the available coffee categories.
     // This list is later used to generate the category cards.

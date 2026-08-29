@@ -1,5 +1,6 @@
 package com.androidlearning.brewly.forntend.screens.detailsscreen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -12,12 +13,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.androidlearning.brewly.R
 
 // NEW — Required because TopAppBar is currently marked experimental.
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailsScreenTopAppBar() {
+fun DetailsScreenTopAppBar(navController: NavHostController) {
 
     // Creates the top app bar for the Details screen.
     TopAppBar(
@@ -48,6 +50,13 @@ fun DetailsScreenTopAppBar() {
                 contentDescription = "Back Button",
                 modifier = Modifier
                     .padding(start = 16.dp)
+                    .clickable(
+                        //popBackStack() removes the current screen from the back stack.
+                        onClick = { navController.popBackStack() }
+
+                        //navigateUp() removes the current screen from the back stack.
+//                        onClick = { navController.navigateUp() }
+                    )
             )
         }
     )

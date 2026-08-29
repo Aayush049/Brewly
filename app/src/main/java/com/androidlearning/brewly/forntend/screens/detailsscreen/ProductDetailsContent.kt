@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -31,8 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.androidlearning.brewly.R
 import com.androidlearning.brewly.domain.model.Product
+import com.androidlearning.brewly.forntend.theme.CharcoalGray
 import com.androidlearning.brewly.forntend.theme.IvoryWhite
-import com.androidlearning.brewly.forntend.theme.LightGray
 
 @Composable
 fun ProductDetailsContent(
@@ -57,7 +58,7 @@ fun ProductDetailsContent(
             contentScale = ContentScale.Crop
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         // Displays the coffee name.
         Text(
@@ -67,13 +68,18 @@ fun ProductDetailsContent(
             color = Color.Black
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
-        Row {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Text(
                 text = "Ice / Hot",
                 fontSize = 16.sp,
-                color = LightGray,
+                color = CharcoalGray,
                 fontWeight = FontWeight.Medium
             )
 
@@ -87,18 +93,18 @@ fun ProductDetailsContent(
                         shape = RoundedCornerShape(10.dp)
                     )
                     .size(35.dp)
-                    .padding(start = 12.dp)
+                    .padding(6.dp)
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         // Separates the basic product information from the description.
         HorizontalDivider(
             color = Color.LightGray.copy(alpha = 0.5f)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         Text(
             text = "Description",
@@ -107,17 +113,17 @@ fun ProductDetailsContent(
             color = Color.Black
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         // Displays the selected coffee's description.
         Text(
             text = product.description,
             fontSize = 16.sp,
-            color = LightGray,
+            color = CharcoalGray,
             fontWeight = FontWeight.Medium
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(40.dp))
 
         Text(
             text = "Size",

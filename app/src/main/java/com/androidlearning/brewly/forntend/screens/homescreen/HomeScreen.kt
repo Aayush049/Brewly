@@ -23,20 +23,19 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.androidlearning.brewly.R
 import com.androidlearning.brewly.domain.model.Product
 import com.androidlearning.brewly.forntend.ui_components.MyBottomNavBar
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
 
     // Stores the current location displayed on the Home screen.
     // Currently empty because real location functionality has not been added yet.
-    val location = ""
+    val location = "Patia, Bhubneshwar"
 
     // KNOWN CONCEPT — Scaffold
     // Provides the overall structure of the Home screen.
@@ -79,60 +78,18 @@ fun HomeScreen() {
             // Creates dummy product data for displaying products in the UI.
             // The Product data class defined in the model package is used here.
             val products = listOf(
-                Product(
-                    id = 1,
-                    name = "Espresso",
-                    description = "Strong and rich",
-                    price = 3.80,
-                    imageRes = R.drawable.coffee_2
-                ),
-                Product(
-                    id = 2,
-                    name = "Latte",
-                    description = "Smooth and creamy",
-                    price = 4.50,
-                    imageRes = R.drawable.coffee_3
-                ),
-                Product(
-                    id = 3,
-                    name = "Cappuccino",
-                    description = "With chocolate",
-                    price = 4.20,
-                    imageRes = R.drawable.coffee_1
-                ),
-                Product(
-                    id = 4,
-                    name = "Mocha",
-                    description = "With cocoa flavor",
-                    price = 4.70,
-                    imageRes = R.drawable.coffee_4
-                ),
-                Product(
-                    id = 5,
-                    name = "Macchiato",
-                    description = "Bold and milky",
-                    price = 4.60,
-                    imageRes = R.drawable.coffee_5
-                ),
-                Product(
-                    id = 6,
-                    name = "Flat White",
-                    description = "Velvety smooth",
-                    price = 4.40,
-                    imageRes = R.drawable.coffee_6
-                ),
-                Product(
-                    id = 7,
-                    name = "Iced Mocha",
-                    description = "Refreshing and rich",
-                    price = 4.70,
-                    imageRes = R.drawable.coffee_4
-                )
+                Product(id = 1, name = "Espresso", description = "Strong and rich", price = 3.80, imageRes = R.drawable.coffee_2),
+                Product(id = 2, name = "Latte", description = "Smooth and creamy", price = 4.50, imageRes = R.drawable.coffee_3),
+                Product(id = 3, name = "Cappuccino", description = "With chocolate", price = 4.20, imageRes = R.drawable.coffee_1),
+                Product(id = 4, name = "Mocha", description = "With cocoa flavor", price = 4.70, imageRes = R.drawable.coffee_4),
+                Product(id = 5, name = "Macchiato", description = "Bold and milky", price = 4.60, imageRes = R.drawable.coffee_5),
+                Product(id = 6, name = "Flat White", description = "Velvety smooth", price = 4.40, imageRes = R.drawable.coffee_6),
+                Product(id = 7, name = "Iced Mocha", description = "Refreshing and rich", price = 4.70, imageRes = R.drawable.coffee_4)
             )
 
             // ProductsGrid is a reusable component responsible for displaying
             // the product collection and the content passed into its content slot.
-            ProductsGrid(products = products) {
+            ProductsGrid(products = products, navController = navController) {
                 // Displays the "Location:" label.
                 Text(
                     text = "Location:",
@@ -184,7 +141,7 @@ fun HomeScreen() {
                 Spacer(modifier = Modifier.height(15.dp))
 
                 // Categories component added below the banner.
-                HomeScreenCatagories()
+                HomeScreenCategories()
             }
         }
     }

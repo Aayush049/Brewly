@@ -21,15 +21,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.androidlearning.brewly.R
+import com.androidlearning.brewly.forntend.navigation.Routes
 import com.androidlearning.brewly.forntend.theme.LightBrown
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(navController: NavHostController) {
 
     // Creates the main container for the entire welcome screen.
     // Box allows the image and the content to be placed on top of each other.
@@ -83,7 +83,7 @@ fun WelcomeScreen() {
 
             // Get Started button for entering the main application.
             Button(
-                onClick = { /* Handle button click */ },
+                onClick = { navController.navigate(Routes.HomeScreen) }, // Navigates to the home screen.
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),

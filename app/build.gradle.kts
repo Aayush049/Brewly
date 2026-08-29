@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+
+    //for navigation
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.0"
 }
 
 android {
@@ -52,4 +55,11 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    //we call these ourselves
+    // Navigation (Jetpack Compose)
+    implementation("androidx.navigation:navigation-compose:2.9.8")
+
+    // Kotlin Serialization (JSON)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
 }
