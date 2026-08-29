@@ -1,4 +1,4 @@
-package com.androidlearning.brewly.model
+package com.androidlearning.brewly.domain.model
 
 // Represents the data required for a single coffee product.
 data class Product(

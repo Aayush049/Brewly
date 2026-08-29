@@ -1,4 +1,4 @@
-package com.androidlearning.brewly.screens.homescreen
+package com.androidlearning.brewly.forntend.screens.homescreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,8 +14,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.androidlearning.brewly.ui.theme.LightBrown
-import com.androidlearning.brewly.ui.theme.LightGray
+import com.androidlearning.brewly.forntend.theme.LightBrown
+import com.androidlearning.brewly.forntend.theme.LightGray
 
 @Composable
 fun CategoryCard(

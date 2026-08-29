@@ -1,4 +1,4 @@
-package com.androidlearning.brewly.screens.homescreen
+package com.androidlearning.brewly.forntend.screens.homescreen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding

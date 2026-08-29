@@ -1,4 +1,4 @@
-package com.androidlearning.brewly.screens.homescreen
+package com.androidlearning.brewly.forntend.screens.homescreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,8 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.androidlearning.brewly.R
-import com.androidlearning.brewly.model.Product
-import com.androidlearning.brewly.screens.ui_components.MyBottomNavBar
+import com.androidlearning.brewly.domain.model.Product
+import com.androidlearning.brewly.forntend.ui_components.MyBottomNavBar
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

@@ -1,4 +1,4 @@
-package com.androidlearning.brewly.ui.theme
+package com.androidlearning.brewly.forntend.theme
 
 import androidx.compose.ui.graphics.Color
 

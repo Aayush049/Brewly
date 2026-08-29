@@ -1,4 +1,4 @@
-package com.androidlearning.brewly.screens.homescreen
+package com.androidlearning.brewly.forntend.screens.homescreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,10 +33,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.androidlearning.brewly.R
-import com.androidlearning.brewly.model.Product
-import com.androidlearning.brewly.ui.theme.IvoryWhite
-import com.androidlearning.brewly.ui.theme.LightBrown
-import com.androidlearning.brewly.ui.theme.LightGray
+import com.androidlearning.brewly.domain.model.Product
+import com.androidlearning.brewly.forntend.theme.IvoryWhite
+import com.androidlearning.brewly.forntend.theme.LightBrown
+import com.androidlearning.brewly.forntend.theme.LightGray
 
 @Composable
 fun ProductCard(

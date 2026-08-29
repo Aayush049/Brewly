@@ -1,4 +1,4 @@
-package com.androidlearning.brewly.screens.homescreen
+package com.androidlearning.brewly.forntend.screens.homescreen
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,7 +10,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.androidlearning.brewly.model.Product
+import com.androidlearning.brewly.domain.model.Product
 
 @Composable
 fun ProductsGrid(

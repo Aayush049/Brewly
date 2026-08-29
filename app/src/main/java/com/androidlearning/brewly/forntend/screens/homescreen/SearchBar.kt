@@ -1,4 +1,4 @@
-package com.androidlearning.brewly.screens.homescreen
+package com.androidlearning.brewly.forntend.screens.homescreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
@@ -23,7 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.androidlearning.brewly.R
-import com.androidlearning.brewly.ui.theme.LightBrown
+import com.androidlearning.brewly.forntend.theme.LightBrown
 
 @Composable
 fun SearchBar() {

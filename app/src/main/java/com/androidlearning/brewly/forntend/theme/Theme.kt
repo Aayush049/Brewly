@@ -1,6 +1,5 @@
-package com.androidlearning.brewly.ui.theme
+package com.androidlearning.brewly.forntend.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

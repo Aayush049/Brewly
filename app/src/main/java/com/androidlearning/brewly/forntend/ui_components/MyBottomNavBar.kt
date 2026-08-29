@@ -1,4 +1,4 @@
-package com.androidlearning.brewly.screens.ui_components
+package com.androidlearning.brewly.forntend.ui_components
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -15,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.androidlearning.brewly.R
-import com.androidlearning.brewly.ui.theme.LightBrown
+import com.androidlearning.brewly.forntend.theme.LightBrown
 
 @Preview
 @Composable
