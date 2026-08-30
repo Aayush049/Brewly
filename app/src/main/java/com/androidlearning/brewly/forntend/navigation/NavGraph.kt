@@ -9,6 +9,7 @@ import com.androidlearning.brewly.forntend.screens.cartscreen.CartScreen
 import com.androidlearning.brewly.forntend.screens.detailsscreen.DetailsScreen
 import com.androidlearning.brewly.forntend.screens.favouritescreen.FavouriteScreen
 import com.androidlearning.brewly.forntend.screens.homescreen.HomeScreen
+import com.androidlearning.brewly.forntend.screens.profilescreen.ProfileScreen
 import com.androidlearning.brewly.forntend.screens.welcomescreen.WelcomeScreen
 
 @Composable
@@ -40,6 +41,10 @@ fun NavGraph() {
 
         composable<Routes.FavoritesScreen> {
             FavouriteScreen(navController)
+        }
+
+        composable<Routes.ProfileScreen> {
+            ProfileScreen(navController)
         }
     }
 }
