@@ -38,7 +38,7 @@ fun CartScreen(navController: NavHostController) {
     var totalAmount by remember { mutableDoubleStateOf(amount + deliverFee) }
 
     Scaffold(
-        topBar = { CartTopAppBar(navController) },
+        topBar = { CartTopAppBar() },
         bottomBar = { MyBottomNavBar(navController, "Cart") }
     ) { innerPadding ->
 

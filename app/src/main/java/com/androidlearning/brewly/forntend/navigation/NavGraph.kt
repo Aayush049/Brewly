@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.androidlearning.brewly.forntend.screens.cartscreen.CartScreen
 import com.androidlearning.brewly.forntend.screens.detailsscreen.DetailsScreen
+import com.androidlearning.brewly.forntend.screens.favouritescreen.FavouriteScreen
 import com.androidlearning.brewly.forntend.screens.homescreen.HomeScreen
 import com.androidlearning.brewly.forntend.screens.welcomescreen.WelcomeScreen
 
@@ -35,6 +36,10 @@ fun NavGraph() {
 
         composable<Routes.CartScreen> {
             CartScreen(navController)
+        }
+
+        composable<Routes.FavoritesScreen> {
+            FavouriteScreen(navController)
         }
     }
 }
