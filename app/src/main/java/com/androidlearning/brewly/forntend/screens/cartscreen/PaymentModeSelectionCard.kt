@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -35,6 +36,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.androidlearning.brewly.R
 import com.androidlearning.brewly.forntend.theme.LightBrown
+import com.androidlearning.brewly.forntend.theme.LightGray
+
 @Composable
 fun PaymentModeSelectionCard(totalAmount: Double) {
     var expended by remember { mutableStateOf(false) }
@@ -49,7 +52,10 @@ fun PaymentModeSelectionCard(totalAmount: Double) {
     //bottom Card Ui
     Card(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = LightGray
+        )
     ) {
         Column(
             modifier = Modifier
@@ -117,7 +123,12 @@ fun PaymentModeSelectionCard(totalAmount: Double) {
 
                     DropdownMenu(
                         expanded = expended,
-                        onDismissRequest = { expended = false }
+                        onDismissRequest = { expended = false },
+                        modifier = Modifier
+                            .background(
+                                color = Color.White
+                            ),
+                        shape = RoundedCornerShape(16.dp)
                     ) {
                         paymentModes.forEach { mode ->
                             DropdownMenuItem(
@@ -147,11 +158,12 @@ fun PaymentModeSelectionCard(totalAmount: Double) {
                                     )
                                 },
                                 modifier = Modifier
-                                    .padding(horizontal = 4.dp)
+                                    .padding(horizontal = 6.dp, vertical = 4.dp)
                                     .background(
                                         color =
                                             if (selectedMode == mode) LightBrown.copy(alpha = 0.1f)
-                                            else Color.Transparent
+                                            else Color.Transparent,
+                                        shape = RoundedCornerShape(16.dp)
                                     )
                             )
                         }

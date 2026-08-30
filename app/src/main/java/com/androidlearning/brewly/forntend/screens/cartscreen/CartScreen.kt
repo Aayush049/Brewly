@@ -19,13 +19,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.androidlearning.brewly.R
 import com.androidlearning.brewly.domain.model.Product
 import com.androidlearning.brewly.forntend.theme.LightBrown
 import com.androidlearning.brewly.forntend.ui_components.MyBottomNavBar
 
 @Composable
-fun CartScreen() {
+fun CartScreen(navController: NavHostController) {
     val products = listOf(
         Product(id = 1, name = "Espresso", description = "Strong and rich", price = 3.80, imageRes = R.drawable.coffee_2),
         Product(id = 2, name = "Latte", description = "Smooth and creamy", price = 4.50, imageRes = R.drawable.coffee_3),
@@ -37,13 +38,13 @@ fun CartScreen() {
     var totalAmount by remember { mutableDoubleStateOf(amount + deliverFee) }
 
     Scaffold(
-        topBar = { CartTopAppBar() },
-        bottomBar = { MyBottomNavBar() }
+        topBar = { CartTopAppBar(navController) },
+        bottomBar = { MyBottomNavBar(navController, "Cart") }
     ) { innerPadding ->
 
         LazyColumn(
             modifier = Modifier
-                .padding(16.dp)
+                .padding(start = 16.dp, end = 16.dp)
                 .padding(innerPadding)
         ) {
             item {

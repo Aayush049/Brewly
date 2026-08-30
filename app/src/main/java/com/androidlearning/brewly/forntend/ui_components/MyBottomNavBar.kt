@@ -12,22 +12,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.androidlearning.brewly.R
+import com.androidlearning.brewly.forntend.navigation.Routes
 import com.androidlearning.brewly.forntend.theme.LightBrown
 
-@Preview
 @Composable
-fun MyBottomNavBar() {
+fun MyBottomNavBar(navController: NavHostController, currentScreen: String) {
 
     // Stores all items that will appear in the bottom navigation bar.
     // Each item contains a title and its corresponding icon resource.
     val navItems = listOf(
-        navItem("Home", R.drawable.regular_outline_home),
-        navItem("Cart", R.drawable.regular_outline_bag),
-        navItem("Favorites", R.drawable.regular_outline_heart),
-        navItem("Profile", R.drawable.outline_account_circle_24),
+        navItem("Home", R.drawable.regular_outline_home, Routes.HomeScreen),
+        navItem("Cart", R.drawable.regular_outline_bag, Routes.CartScreen),
+        navItem("Favorites", R.drawable.regular_outline_heart, Routes.FavoritesScreen),
+        navItem("Profile", R.drawable.outline_account_circle_24, Routes.ProfileScreen),
     )
 
     // Creates the Material 3 bottom navigation bar.
@@ -49,7 +49,7 @@ fun MyBottomNavBar() {
                 // TEMPORARY:
                 // Every item is currently marked as selected.
                 // This will be replaced with actual navigation state later.
-                selected = true,
+                selected = item.title == currentScreen,
 
                 // Cart/Home/Favorites/Profile icon is displayed here.
                 icon = {
@@ -71,8 +71,16 @@ fun MyBottomNavBar() {
                 // Sets the size of the navigation item.
                 modifier = Modifier.size(30.dp),
 
-                // Navigation action will be implemented later.
-                onClick = { /* Handle navigation item click */ },
+                // Handling Bottom Navigation Item Clicks
+                onClick = {
+                    navController.navigate(item.route){
+                        popUpTo(navController.graph.startDestinationId){
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
 
                 // Hides labels when the item is not selected.
                 alwaysShowLabel = false,
@@ -101,5 +109,6 @@ fun MyBottomNavBar() {
 // Stores the information required to display an item.
 data class navItem(
     val title: String,  // Text displayed for the navigation item
-    val icon: Int       // Android drawable resource ID for the icon
+    val icon: Int,      // Android drawable resource ID for the icon
+    val route : Routes  // Route to navigate to when the item is clicked
 )

@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.androidlearning.brewly.forntend.screens.cartscreen.CartScreen
 import com.androidlearning.brewly.forntend.screens.detailsscreen.DetailsScreen
 import com.androidlearning.brewly.forntend.screens.homescreen.HomeScreen
 import com.androidlearning.brewly.forntend.screens.welcomescreen.WelcomeScreen
@@ -30,6 +31,10 @@ fun NavGraph() {
         composable<Routes.DetailsScreen> { backStackEntry ->
             val args = backStackEntry.toRoute<Routes.DetailsScreen>()
             DetailsScreen(productId = args.productId, navController)
+        }
+
+        composable<Routes.CartScreen> {
+            CartScreen(navController)
         }
     }
 }

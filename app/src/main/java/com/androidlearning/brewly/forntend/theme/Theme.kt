@@ -1,7 +1,7 @@
 package com.androidlearning.brewly.forntend.theme
 
 import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
+//import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -34,7 +34,8 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun BrewlyTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    //isSystemInDarkTheme() used to determine the current system theme returns a boolean value
+    darkTheme: Boolean = false,  //Always remain in light mode
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit

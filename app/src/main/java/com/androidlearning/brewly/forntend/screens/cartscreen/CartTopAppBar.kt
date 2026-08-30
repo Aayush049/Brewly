@@ -15,11 +15,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.androidlearning.brewly.R
+import com.androidlearning.brewly.forntend.navigation.Routes
 
 // NEW — Required because TopAppBar is currently marked experimental.
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CartTopAppBar() {
+fun CartTopAppBar(navController: NavHostController) {
 
     // Creates the top app bar for the Details screen.
     TopAppBar(
@@ -30,23 +31,6 @@ fun CartTopAppBar() {
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold
-            )
-        },
-
-        // Back arrow added to the left side of the app bar.
-        navigationIcon = {
-            Icon(
-                painter = painterResource(R.drawable.regular_outline_arrow_left),
-                contentDescription = "Back Button",
-                modifier = Modifier
-                    .padding(start = 16.dp)
-                    .clickable(
-                        //popBackStack() removes the current screen from the back stack.
-                        onClick = {  }
-
-                        //navigateUp() removes the current screen from the back stack.
-//                        onClick = { navController.navigateUp() }
-                    )
             )
         }
     )

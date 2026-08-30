@@ -41,7 +41,7 @@ fun HomeScreen(navController: NavHostController) {
     // Provides the overall structure of the Home screen.
     // The bottom navigation bar is supplied through the bottomBar slot.
     Scaffold(
-        bottomBar = { MyBottomNavBar() }
+        bottomBar = { MyBottomNavBar(navController, "Home") }
     ) { innerPadding ->
 
         // NEW CONCEPT — Brush / Gradient
