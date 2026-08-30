@@ -1,5 +1,7 @@
 package com.androidlearning.brewly.forntend.screens.cartscreen
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,10 +16,16 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,9 +35,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.androidlearning.brewly.R
 import com.androidlearning.brewly.forntend.theme.LightBrown
-
 @Composable
 fun PaymentModeSelectionCard(totalAmount: Double) {
+    var expended by remember { mutableStateOf(false) }
+
+    var selectedMode by remember { mutableStateOf("Online") }
+
+    val paymentModes = listOf(
+        "Online",
+        "Cash"
+    )
+
     //bottom Card Ui
     Card(
         modifier = Modifier
@@ -37,7 +53,7 @@ fun PaymentModeSelectionCard(totalAmount: Double) {
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp)
+                .padding(20.dp)
         ) {
             Row(
                 modifier = Modifier
@@ -49,8 +65,11 @@ fun PaymentModeSelectionCard(totalAmount: Double) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        painter = painterResource(R.drawable.mobile_banking),
-                        contentDescription = "Mobile Banking",
+                        painter = painterResource(
+                            if (selectedMode == "Online") { R.drawable.mobile_banking }
+                            else { R.drawable.wallet }
+                        ),
+                        contentDescription = selectedMode,
                         modifier = Modifier
                             .size(30.dp),
                         tint = LightBrown
@@ -60,7 +79,7 @@ fun PaymentModeSelectionCard(totalAmount: Double) {
 
                     Column() {
                         Text(
-                            text = "Online",
+                            text = selectedMode,
                             style = MaterialTheme.typography.bodyLarge.copy(
                                 fontWeight = FontWeight.SemiBold
                             )
@@ -68,12 +87,22 @@ fun PaymentModeSelectionCard(totalAmount: Double) {
 
                         Spacer(modifier = Modifier.height(4.dp))
 
-                        Text(
-                            text = "$ $totalAmount",
-                            style = MaterialTheme.typography.bodyLarge.copy(
-                                color = LightBrown
+                        if (selectedMode == "Online") {
+                            Text(
+                                text = "$ $totalAmount",
+                                style = MaterialTheme.typography.bodyLarge.copy(
+                                    color = LightBrown
+                                )
                             )
-                        )
+                        }
+                        else {
+                            Text(
+                                text = "$ ${totalAmount + 1.0}",
+                                style = MaterialTheme.typography.bodyLarge.copy(
+                                    color = LightBrown
+                                )
+                            )
+                        }
                     }
 
                 }
@@ -83,7 +112,50 @@ fun PaymentModeSelectionCard(totalAmount: Double) {
                         contentDescription = "Arrow Down",
                         modifier = Modifier
                             .size(20.dp)
+                            .clickable{ expended = !expended }
                     )
+
+                    DropdownMenu(
+                        expanded = expended,
+                        onDismissRequest = { expended = false }
+                    ) {
+                        paymentModes.forEach { mode ->
+                            DropdownMenuItem(
+                                text = {
+                                    Text(
+                                        text = mode,
+                                        style = MaterialTheme.typography.bodyLarge
+                                    )
+                                },
+                                onClick = {
+                                    selectedMode = mode
+                                    expended = false
+                                },
+                                leadingIcon = {
+                                    Icon(
+                                        painter = painterResource(
+                                            if (mode == "Online") {
+                                                R.drawable.mobile_banking
+                                            } else {
+                                                R.drawable.wallet
+                                            }
+                                        ),
+                                        contentDescription = mode,
+                                        tint = LightBrown,
+                                        modifier = Modifier
+                                            .size(24.dp)
+                                    )
+                                },
+                                modifier = Modifier
+                                    .padding(horizontal = 4.dp)
+                                    .background(
+                                        color =
+                                            if (selectedMode == mode) LightBrown.copy(alpha = 0.1f)
+                                            else Color.Transparent
+                                    )
+                            )
+                        }
+                    }
                 }
             }
 

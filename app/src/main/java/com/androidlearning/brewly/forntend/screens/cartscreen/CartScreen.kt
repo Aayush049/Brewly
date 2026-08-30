@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.androidlearning.brewly.R
 import com.androidlearning.brewly.domain.model.Product
 import com.androidlearning.brewly.forntend.theme.LightBrown
+import com.androidlearning.brewly.forntend.ui_components.MyBottomNavBar
 
 @Composable
 fun CartScreen() {
@@ -36,7 +37,8 @@ fun CartScreen() {
     var totalAmount by remember { mutableDoubleStateOf(amount + deliverFee) }
 
     Scaffold(
-        topBar = { CartTopAppBar() }
+        topBar = { CartTopAppBar() },
+        bottomBar = { MyBottomNavBar() }
     ) { innerPadding ->
 
         LazyColumn(
